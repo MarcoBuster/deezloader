@@ -5,6 +5,7 @@ from tqdm import tqdm
 from spotipy import Spotify
 from requests import Session
 from deezloader import exceptions
+from pathvalidate import sanitize_filename
 
 from deezloader.utils import (
 	decryptfile, genurl,
@@ -412,8 +413,8 @@ class Login:
 		name = (
 			"%s - %s"
 			% (
-				datas['artist'],
-				datas['music'],
+				sanitize_filename(datas['artist']),
+				sanitize_filename(datas['music']),
 			)
 		)
 
