@@ -411,8 +411,9 @@ class Login:
 		check_dir(directory)
 
 		name = (
-			"%s - %s"
+			"%s%s - %s"
 			% (
+				directory,
 				sanitize_filename(datas['artist']),
 				sanitize_filename(datas['music']),
 			)
@@ -491,14 +492,17 @@ class Login:
 
 			discnum = str(ur['disk_number'])
 			tracknum = str(ur['track_position'])
+			artists = []
+			for contributor in ur['contributors']:
+				if contributor['name'] != '':
+					artists.append(contributor['name'])
 
 			names.append(
-				"%s%s CD %s TRACK %s"
+				"%s%s - %s"
 				% (
 					directory,
-					album,
-					discnum,
-					tracknum
+					sanitize_filename(artist_sort(artists)),
+					sanitize_filename(ur['title']),
 				)
 			)
 
