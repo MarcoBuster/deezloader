@@ -410,12 +410,10 @@ class Login:
 		check_dir(directory)
 
 		name = (
-			"%s%s CD %s TRACK %s"
+			"%s - %s"
 			% (
-				directory,
-				album,
-				datas['discnum'],
-				datas['tracknum']
+				datas['artist'],
+				datas['music'],
 			)
 		)
 
