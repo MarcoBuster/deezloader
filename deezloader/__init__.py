@@ -502,7 +502,7 @@ class Login:
 				% (
 					directory,
 					sanitize_filename(artist_sort(artists)),
-					sanitize_filename(ur['title']),
+					sanitize_filename(ur['title']) if ur['title'] else tracknum,
 				)
 			)
 
