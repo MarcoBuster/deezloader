@@ -496,13 +496,17 @@ class Login:
 			for contributor in ur['contributors']:
 				if contributor['name'] != '':
 					artists.append(contributor['name'])
+			try:
+				sanitized = sanitize_filename(ur['title'])
+			except:
+				sanitized = tracknum
 
 			names.append(
 				"%s%s - %s"
 				% (
 					directory,
 					sanitize_filename(artist_sort(artists)),
-					sanitize_filename(ur['title']) if ur['title'] else tracknum,
+					sanitized,
 				)
 			)
 
